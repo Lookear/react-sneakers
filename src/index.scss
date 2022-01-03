@@ -3,6 +3,7 @@ body {
     font-family: "Inter", system-ui;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
 }
 
 * {
@@ -15,6 +16,7 @@ body {
     border-radius: 20px;
     max-width: 1080px;
     margin: 50px auto;
+    
 }
 
 header {
@@ -138,6 +140,7 @@ header {
 
 .overlay {
     position: absolute;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;

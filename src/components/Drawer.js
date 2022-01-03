@@ -1,47 +1,44 @@
-function Drawer() {
-    return (
-        <div style={{ display: 'none' }} className="overlay">
-        <div className="drawer">
-          <h2 className="d-flex justify-between mb-30 ">
-            Корзина <img className="removeItem cu-p" src="img/cristik.svg" alt="Remove" />
-          </h2>
+function Drawer({onClose,items=[]}) {
+  return (
+    <div className="overlay">
+      <div className="drawer">
+        <h2 className="d-flex justify-between mb-30 ">
+          Корзина <img onClick={onClose} className="removeItem cu-p" src="img/cristik.svg" alt="Remove" />
+        </h2>
 
-          <div className="cartItem">
-            <div className="cartItem d-flex align-center mb-20">
-              <div style={{ backgroundImage: 'url(img/sneakers/1.jpg)' }} className="cartItemImg"></div>
-              <div className="mr-20 flex">
-                <p className="mp-5">Мужские Кроссовки Nike Air Max 270</p>
-                <b>12 999 руб.</b>
+        <div className="cartItem">
+          {
+            items.map((obj) => (
+              <div className="cartItem d-flex align-center mb-20">
+                <div style={{ backgroundImage: `url(${obj.imageUrl})` }} className="cartItemImg"></div>
+                <div className="mr-20 flex">
+                  <p className="mp-5">{obj.title}</p>
+                  <b>{obj.price} руб.</b>
+                </div>
+                <img className="removeItem" src="img/cristik.svg" alt="Remove" />
               </div>
-              <img className="removeItem" src="img/cristik.svg" alt="Remove" />
-            </div>
-            <div className="cartItem d-flex align-center mb-20">
-              <div style={{ backgroundImage: 'url(img/sneakers/2.jpg)' }} className="cartItemImg"></div>
-              <div className="mr-20 flex">
-                <p className="mp-5">Мужские Кроссовки Nike Air Max 270</p>
-                <b>12 999 руб.</b>
-              </div>
-              <img className="removeItem" src="img/cristik.svg" alt="Remove" />
-            </div>
+            ))
+          }
 
-          </div>
-          <div className="cartTotalBlock">
-            <ul >
-              <li >
-                <span>Итого:</span>
-                <div></div>
-                <b>24 498 руб.</b>
-              </li>
-              <li >
-                <span>Налог 5%:</span>
-                <div></div>
-                <b>1074 руб.</b>
-              </li>
-            </ul>
-            <button className="greenButton">Оформить заказ <img src="img/arrow.svg" alt="Arrow" /></button>
-          </div>
+
         </div>
+        <div className="cartTotalBlock">
+          <ul >
+            <li >
+              <span>Итого:</span>
+              <div></div>
+              <b>24 498 руб.</b>
+            </li>
+            <li >
+              <span>Налог 5%:</span>
+              <div></div>
+              <b>1074 руб.</b>
+            </li>
+          </ul>
+          <button className="greenButton">Оформить заказ <img src="img/arrow.svg" alt="Arrow" /></button>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
 export default Drawer;
