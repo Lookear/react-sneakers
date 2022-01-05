@@ -1,20 +1,23 @@
 import styles from './Card.module.scss';
 import React from 'react';
 
-console.log(styles)
-function Card({onFavorite ,title,imageUrl,price,onPlus}) {
-    const [isAdded, setisAdded] = React.useState(false);
+
+function Card({ onFavorite, cartid, title, imageUrl, price, onPlus,onRemove ,CheckItem}) {
+    const [isAdded, setisAdded] = React.useState(CheckItem);
     const onClickPlus = () => {
-        onPlus({title,imageUrl,price});
+        console.log(isAdded)
+        {
+            console.log(cartid)
+            !isAdded ?  onPlus({ title, imageUrl, price,cartid }):onRemove({ cartid });
+        }
         setisAdded(!isAdded);
 
     }
-    React.useEffect(() => {
-        console.log(1);
-    }, [isAdded]);
+    
     const onClickButton = () => {
         alert(title);
     }
+    
     return (
         <div className={styles.card}>
             <div className={styles.favorite} onClick={onFavorite}>

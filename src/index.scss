@@ -3,7 +3,6 @@ body {
     font-family: "Inter", system-ui;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    
 }
 
 * {
@@ -16,7 +15,6 @@ body {
     border-radius: 20px;
     max-width: 1080px;
     margin: 50px auto;
-    
 }
 
 header {
@@ -36,8 +34,6 @@ header {
         margin: 0;
     }
 }
-
-
 
 .button {
     background: #ffffff;
@@ -60,8 +56,13 @@ header {
         width: 200px;
     }
 }
-
-
+.cart{
+    display: flex;
+    flex-direction: column;
+    
+    right: 0;
+    height: 100%;
+}
 
 .drawer {
     position: absolute;
@@ -73,7 +74,7 @@ header {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    .cartItem{
+    .cartItem {
         overflow: auto;
         margin-bottom: 40px;
     }
@@ -86,7 +87,7 @@ header {
     ul {
         display: block;
         margin-bottom: 40px !important;
-        
+
         li {
             display: flex;
             align-items: flex-end;
@@ -101,24 +102,23 @@ header {
             margin: 0 7px;
         }
     }
-    .greenButton{
+    .greenButton {
         position: relative;
-        &:hover{
-            img{
+        &:hover {
+            img {
                 transform: translateX(5px);
             }
         }
-        
-        img{
-           position: absolute; 
-           right: 30px;
-           top: 20px;
-           transition: transform 0.15s ease-in-out;
+
+        img {
+            position: absolute;
+            right: 30px;
+            top: 20px;
+            transition: transform 0.15s ease-in-out;
         }
     }
-   
 }
-.greenButton{
+.greenButton {
     width: 100%;
     height: 55px;
     background: #9dd558;
@@ -129,17 +129,16 @@ header {
     font-weight: 500;
     cursor: pointer;
     transition: background 0.1s ease-in-out;
-    &:hover{
+    &:hover {
         background: lighten($color: #9dd558, $amount: 5%);
     }
-    &:active{
+    &:active {
         background: darken($color: #9dd558, $amount: 5%);
     }
-    
 }
 
 .overlay {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
@@ -169,6 +168,43 @@ header {
         font-size: 14px;
     }
 }
+.cartNull {
+    position: absolute;
+    text-align: center;
+    padding: 50px;
+    top: 250px;
+    flex: 1;
+    
+    b {
+        text-align: right;
+        font-size: 22px;
+        line-height: 27px;
+    }
+    p {
+        font-size: 16px;
+        opacity: 0.5;
+        line-height: 24px;
+        text-align: center;
+    }
+    .greenButton{
+        text-align: center;
+        justify-content: center;
+        width: 250px;
+        &:hover {
+          img {
+            transform: rotate(180deg) translateX(6px);
+          }
+        }
+    
+        img {
+          position: relative;
+          top: 1px;
+          transform: rotate(180deg);
+          right: 15px;
+          transition: transform 0.1s ease-in-out;
+        }
+    }
+}
 .removeItem {
     opacity: 0.5;
     cursor: pointer;
@@ -177,4 +213,3 @@ header {
         opacity: 1;
     }
 }
-
