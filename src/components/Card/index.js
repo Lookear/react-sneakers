@@ -2,14 +2,13 @@ import styles from './Card.module.scss';
 import React from 'react';
 
 
-function Card({ onFavorite, cartid, title, imageUrl, price, onPlus,onRemove ,CheckItem}) {
+function Card({ onFavorite, title,cartid, imageUrl, price, onPlus,onRemove ,CheckItem}) {
     const [isAdded, setisAdded] = React.useState(CheckItem);
     const onClickPlus = () => {
-        console.log(isAdded)
-        {
-            console.log(cartid)
-            !isAdded ?  onPlus({ title, imageUrl, price,cartid }):onRemove({ cartid });
-        }
+      
+            console.log({cartid})
+            !isAdded ?  onPlus({title, imageUrl, price ,cartid}):onRemove({cartid});
+        
         setisAdded(!isAdded);
 
     }

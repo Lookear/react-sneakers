@@ -23,23 +23,44 @@ function App() {
           setItems(res.data);
         })
         setCartItems(res.data);
+        console.log(cartItems);
       })
   }, []);
   const onAddToCart = (obj) => {
-    
+    console.log(obj);
     axios.post('https://61d2da55b4c10c001712b615.mockapi.io/cart',obj)
     setCartItems(prev => [...prev, obj]);
   }
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
   }
-  const omRemoveItem =(id) =>{
-    console.log(id);
-    axios.delete(`https://61d2da55b4c10c001712b615.mockapi.io/cart/${id}`)
-    setCartItems(prev => prev.filter(item => item.id !== id));
+  const omRemoveItem =(cartid) =>{
+    console.log(cartid);
+    axios.delete(`https://61d2da55b4c10c001712b615.mockapi.io/cart/${cartid}`)
+    setCartItems(prev => prev.filter(item => item.id !== cartid));
     
   }
+  const omRemoveItemClickCart =(id) =>{
+    console.log(id)
+    axios.get('https://61d2da55b4c10c001712b615.mockapi.io/cart')
+      .then(res => {
+        
+     
+        var id1=res.data.filter(item  => item.cartid == id )
+      console.log(id1)
+      console.log(id1[0].id)
+      axios.delete(`https://61d2da55b4c10c001712b615.mockapi.io/cart/${id1[0].id}`)
 
+     setCartItems(prev => prev.filter(obj => obj.cartid !== id1[0].cartid))
+      })
+    
+   
+     
+    
+    
+    
+  }
+ 
   React.useEffect(() => {
     var initialValue = 0;
     const sum = cartItems.reduce(
@@ -80,7 +101,7 @@ function App() {
                 imageUrl={item.imageUrl}
                 onFavorite={() => console.log('Добавили в закладки')}
                 onPlus={(obj) => onAddToCart(obj)}
-                onRemove={(obj) => omRemoveItem(obj.id)}
+                onRemove={(obj) => omRemoveItemClickCart(obj.cartid)}
                 CheckItem={cartItems.some(obj => obj.cartid == item.id )}
               />
 
